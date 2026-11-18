@@ -7,6 +7,22 @@ class AlbumWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Card(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          ListTile(
+            title: Text(albums.title),
+            subtitle: Row(
+              children: [
+                Text('Album ID: ${albums.id}'),
+                SizedBox(width: 10),
+                Text('User ID: ${albums.userId}'),
+              ],
+            ),
+          ),
+        ],
+      ),
+    )
   }
 }

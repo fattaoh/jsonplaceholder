@@ -9,7 +9,7 @@ class AsyncDataView<T> extends StatefulWidget {
     super.key,
     required this.onFetch,
     required this.itemBuilder,
-    required this.title,
+    required this.title, future,
   });
 
   @override

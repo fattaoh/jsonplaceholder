@@ -1,6 +1,3 @@
-// facebook.com => baseURL (const)
-//  facebook.com/posts => baseURL + posts (const)
-
 import 'dart:convert';
 
 import 'package:jsonplaceholder/model/albums.dart';
@@ -11,72 +8,101 @@ import 'package:http/http.dart' as http;
 import 'package:jsonplaceholder/model/todos.dart';
 import 'package:jsonplaceholder/model/users.dart';
 
-class ApiServices {
+class ApiService {
   static const String baseUrl = 'https://jsonplaceholder.typicode.com/';
 
-  // endpoint posts
+  // endpoints posts
   static Future<List<Posts>> fetchPosts() async {
     final response = await http.get(Uri.parse('$baseUrl/posts'));
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
-      return data.map((json) => Posts.fromJson(json as Map<String, dynamic>)).toList();
+      return data
+          .map((json) => Posts.fromJson(json as Map<String, dynamic>))
+          .toList();
     } else {
-      throw Exception('Failed to fetch posts (HTTP ${response.statusCode})');
+      throw Exception('Gagal memuat Posts (HTTP ${response.statusCode})');
     }
   }
 
-  // endpoint albums
+  // endpoints albums
   static Future<List<Albums>> fetchAlbums() async {
     final response = await http.get(Uri.parse('$baseUrl/albums'));
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
-      return data.map((json) => Albums.fromJson(json as Map<String, dynamic>)).toList();
+      return data
+          .map((json) => Albums.fromJson(json as Map<String, dynamic>))
+          .toList();
     } else {
-      throw Exception('Failed to fetch albums (HTTP ${response.statusCode})');
+      throw Exception('Gagal memuat Albums (HTTP ${response.statusCode})');
     }
   }
 
-  // endpoint comments
+  // endpoints comments
   static Future<List<Comments>> fetchComments() async {
     final response = await http.get(Uri.parse('$baseUrl/comments'));
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
-      return data.map((json) => Comments.fromJson(json as Map<String, dynamic>)).toList();
+      return data
+          .map((json) => Comments .fromJson(json as Map<String, dynamic>))
+          .toList();
     } else {
-      throw Exception('Failed to fetch comments (HTTP ${response.statusCode})');
+      throw Exception('Gagal memuat Comments (HTTP ${response.statusCode})');
     }
   }
 
-  // endpoint photos
+  // endpoints photos
   static Future<List<Photos>> fetchPhotos() async {
     final response = await http.get(Uri.parse('$baseUrl/photos'));
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
-      return data.map((json) => Photos.fromJson(json as Map<String, dynamic>)).toList();
+      return data
+          .map((json) => Photos.fromJson(json as Map<String, dynamic>))
+          .toList();
     } else {
-      throw Exception('Failed to fetch photos (HTTP ${response.statusCode})');
+      throw Exception('Gagal memuat Photos (HTTP ${response.statusCode})');
     }
   }
 
-  // endpoint posts
-  static Future<List<Todos>> fetchTodos() async {
-    final response = await http.get(Uri.parse('$baseUrl/posts'));
+  static Future<List<Photos>> fetchAlbumPhotos(int albumId) async {
+    final uri = Uri.parse(
+      '${baseUrl}photos',
+    ).replace(queryParameters: {'albumId': albumId.toString()});
+    final response = await http.get(uri);
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
-      return data.map((json) => Todos.fromJson(json as Map<String, dynamic>)).toList();
+      return data
+          .map((json) => Photos.fromJson(json as Map<String, dynamic>))
+          .toList();
     } else {
-      throw Exception('Failed to fetch todos (HTTP ${response.statusCode})');
+      throw Exception(
+        'Gagal memuat foto album (HTTP ${response.statusCode})',
+      );
     }
   }
 
-  // endpoint users
+  // endpoints todos
+  static Future<List<Todos>> fetchTodos() async {
+    final response = await http.get(Uri.parse('$baseUrl/todos'));
+    if (response.statusCode == 200) {
+      final List<dynamic> data = json.decode(response.body);
+      return data
+          .map((json) => Todos.fromJson(json as Map<String, dynamic>))
+          .toList();
+    } else {
+      throw Exception('Gagal memuat Todos (HTTP ${response.statusCode})');
+    }
+  }
+
+  // endpoints users
   static Future<List<Users>> fetchUsers() async {
     final response = await http.get(Uri.parse('$baseUrl/users'));
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
-      return data.map((json) => Users.fromJson(json as Map<String, dynamic>)).toList();
+      return data
+          .map((json) => Users.fromJson(json as Map<String, dynamic>))
+          .toList();
     } else {
-      throw Exception('Failed to fetch users (HTTP ${response.statusCode})');
+      throw Exception('Gagal memuat Users (HTTP ${response.statusCode})');
     }
   }
 }
