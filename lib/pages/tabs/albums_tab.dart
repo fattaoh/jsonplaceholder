@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AlbumsTab extends StatelessWidget {
-  final albums;
-  const AlbumsTab({super.key, required this.albums});
+  const AlbumsTab({super.key});
 
   @override
   Widget build(BuildContext context) {

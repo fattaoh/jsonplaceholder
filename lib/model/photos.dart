@@ -9,21 +9,33 @@ Photos photosFromJson(String str) => Photos.fromJson(json.decode(str));
 String photosToJson(Photos data) => json.encode(data.toJson());
 
 class Photos {
-    final String greeting;
-    final List<String> instructions;
+    final int albumId;
+    final int id;
+    final String title;
+    final String url;
+    final String thumbnailUrl;
 
     Photos({
-        required this.greeting,
-        required this.instructions,
+        required this.albumId,
+        required this.id,
+        required this.title,
+        required this.url,
+        required this.thumbnailUrl,
     });
 
     factory Photos.fromJson(Map<String, dynamic> json) => Photos(
-        greeting: json["greeting"],
-        instructions: List<String>.from(json["instructions"].map((x) => x)),
+        albumId: json["albumId"],
+        id: json["id"],
+        title: json["title"],
+        url: json["url"],
+        thumbnailUrl: json["thumbnailUrl"],
     );
 
     Map<String, dynamic> toJson() => {
-        "greeting": greeting,
-        "instructions": List<dynamic>.from(instructions.map((x) => x)),
+        "albumId": albumId,
+        "id": id,
+        "title": title,
+        "url": url,
+        "thumbnailUrl": thumbnailUrl,
     };
 }

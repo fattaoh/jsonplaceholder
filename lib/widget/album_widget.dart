@@ -7,22 +7,43 @@ class AlbumWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          ListTile(
-            title: Text(albums.title),
-            subtitle: Row(
-              children: [
-                Text('Album ID: ${albums.id}'),
-                SizedBox(width: 10),
-                Text('User ID: ${albums.userId}'),
-              ],
-            ),
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 4.0),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Icon(Icons.photo, size: 50, )),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(albums.title, style: theme.textTheme.bodyMedium!.copyWith(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      )),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(child: Text('Album #${albums.id}'),)
+                    ]
+                  ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
-    )
+    );
   }
 }

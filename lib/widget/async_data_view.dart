@@ -9,7 +9,7 @@ class AsyncDataView<T> extends StatefulWidget {
     super.key,
     required this.onFetch,
     required this.itemBuilder,
-    required this.title, future,
+    required this.title,
   });
 
   @override
@@ -61,37 +61,43 @@ class _AsyncDataViewState<T> extends State<AsyncDataView<T>> {
                 SizedBox(height: 12),
                 Text('Terjadi kesalahan saat memuat ${widget.title}'),
                 SizedBox(height: 12),
-                Text('$snapshot.error'),
+                Text('${snapshot.error}'),
+                ElevatedButton(
+                  onPressed: _handleRefresh,
+                  child: Text('Refresh Halaman'),
+                ),
               ],
             ),
           );
         }
         // 3. Empty state
+        final items = snapshot.data ?? [];
+        if (items.isEmpty){
+          return Center(
+            child: Text('Tidak ada data ${widget.title}'),
+          );
+        }
         // 4. Success state with pull refresh
-        return RefreshIndicator(
-          onRefresh: _handleRefresh,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Text('Total: ${widget.title} ${items.length}'),
-                    Text('Tarik ke bawah untuk refresh'),
-                  ],
-                ),
+        return RefreshIndicator(onRefresh: _handleRefresh, child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('${widget.title} (${items.length})', style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text('Tarik ke bawah untuk refresh')
+                ],
               ),
-              Container(),
-              Expanded(child: ListView.builder(
-                itemBuilder: (context, index) {
-                  return widget.itemBuilder(context, items[index], index);
-                },
-                itemCount: items.length,
-              ),
-              ),
-            ],
-          ),
-        );
+            ),
+            Expanded(child: ListView.builder(
+              itemBuilder: (context, index) {
+                return widget.itemBuilder(context, items[index], index);
+              },
+              itemCount: items.length,
+            ))
+          ],
+        )); 
       },
     );
   }

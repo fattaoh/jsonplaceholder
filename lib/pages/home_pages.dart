@@ -31,8 +31,8 @@ class HomePages extends StatelessWidget {
 
         body: TabBarView(children: [
           PostsTab(),
-          CommentsTab(comments: null,),
-          AlbumsTab(albums: null,),
+          CommentsTab(),
+          AlbumsTab(),
           PhotosTab(),
           TodosTab(),
           UsersTab(),

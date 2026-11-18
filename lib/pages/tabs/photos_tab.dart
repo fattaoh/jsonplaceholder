@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:jsonplaceholder/service/api_services.dart';
+import 'package:jsonplaceholder/widget/async_data_view.dart';
+import 'package:jsonplaceholder/widget/photo_widget.dart';
 
 class PhotosTab extends StatelessWidget {
-  const new({super.key});
+  const PhotosTab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return AsyncDataView(
+      onFetch: ApiService.fetchPhotos,
+      itemBuilder: (context, photos, index) {
+        return PhotoWidget(photos: photos, photoUrl: '',);
+      },
+      title: 'Photos',
+    );
   }
 }

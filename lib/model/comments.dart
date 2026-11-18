@@ -4,26 +4,38 @@
 
 import 'dart:convert';
 
-Comments commentsFromJson(String str) => Comments.fromJson(json.decode(str));
+List<Comments> commentsFromJson(String str) => List<Comments>.from(json.decode(str).map((x) => Comments.fromJson(x)));
 
-String commentsToJson(Comments data) => json.encode(data.toJson());
+String commentsToJson(List<Comments> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Comments {
-    final String greeting;
-    final List<String> instructions;
+    final int postId;
+    final int id;
+    final String name;
+    final String email;
+    final String body;
 
     Comments({
-        required this.greeting,
-        required this.instructions,
+        required this.postId,
+        required this.id,
+        required this.name,
+        required this.email,
+        required this.body,
     });
 
     factory Comments.fromJson(Map<String, dynamic> json) => Comments(
-        greeting: json["greeting"],
-        instructions: List<String>.from(json["instructions"].map((x) => x)),
+        postId: json["postId"],
+        id: json["id"],
+        name: json["name"],
+        email: json["email"],
+        body: json["body"],
     );
 
     Map<String, dynamic> toJson() => {
-        "greeting": greeting,
-        "instructions": List<dynamic>.from(instructions.map((x) => x)),
+        "postId": postId,
+        "id": id,
+        "name": name,
+        "email": email,
+        "body": body,
     };
 }

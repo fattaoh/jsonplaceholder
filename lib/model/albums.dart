@@ -4,26 +4,30 @@
 
 import 'dart:convert';
 
-Albums albumsFromJson(String str) => Albums.fromJson(json.decode(str));
+List<Albums> albumsFromJson(String str) => List<Albums>.from(json.decode(str).map((x) => Albums.fromJson(x)));
 
-String albumsToJson(Albums data) => json.encode(data.toJson());
+String albumsToJson(List<Albums> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Albums {
-    final String greeting;
-    final List<String> instructions;
+    final int userId;
+    final int id;
+    final String title;
 
     Albums({
-        required this.greeting,
-        required this.instructions,
+        required this.userId,
+        required this.id,
+        required this.title,
     });
 
     factory Albums.fromJson(Map<String, dynamic> json) => Albums(
-        greeting: json["greeting"],
-        instructions: List<String>.from(json["instructions"].map((x) => x)),
+        userId: json["userId"],
+        id: json["id"],
+        title: json["title"],
     );
 
     Map<String, dynamic> toJson() => {
-        "greeting": greeting,
-        "instructions": List<dynamic>.from(instructions.map((x) => x)),
+        "userId": userId,
+        "id": id,
+        "title": title,
     };
 }
