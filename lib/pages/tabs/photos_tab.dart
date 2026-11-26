@@ -11,7 +11,7 @@ class PhotosTab extends StatelessWidget {
     return AsyncDataView(
       onFetch: ApiService.fetchPhotos,
       itemBuilder: (context, photos, index) {
-        return PhotoWidget(photos: photos, photoUrl: '',);
+        return PhotoWidget(photos: photos);
       },
       title: 'Photos',
     );

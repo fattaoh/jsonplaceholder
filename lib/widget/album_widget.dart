@@ -19,23 +19,25 @@ class AlbumWidget extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Icon(Icons.photo, size: 50, )),
+                child: Icon(Icons.photo, size: 50),
+              ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(albums.title, style: theme.textTheme.bodyMedium!.copyWith(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      )),
+                      Text(
+                        albums.title,
+                        style: theme.textTheme.bodyMedium!.copyWith(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(child: Text('Album #${albums.id}'),)
-                    ]
-                  ),
+                        children: [Text('Album #${albums.id}')],
+                      ),
                     ],
                   ),
                 ),

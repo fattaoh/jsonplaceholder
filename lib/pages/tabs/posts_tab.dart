@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:jsonplaceholder/service/api_services.dart';
+import 'package:jsonplaceholder/widget/async_data_view.dart';
+import 'package:jsonplaceholder/widget/post_widget.dart';
 
 class PostsTab extends StatelessWidget {
-  const new({super.key});
+  const PostsTab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return AsyncDataView(
+      onFetch: ApiService.fetchPosts,
+      itemBuilder: (context, post, index) {
+        return PostWidget(post: post);
+      },
+      title: 'Posts',
+    );
   }
 }

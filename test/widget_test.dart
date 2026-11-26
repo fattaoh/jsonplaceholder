@@ -7,24 +7,49 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:jsonplaceholder/main.dart';
+import 'package:jsonplaceholder/model/users.dart';
+import 'package:jsonplaceholder/widget/user_widget.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('user card displays profile and contact details', (
+    WidgetTester tester,
+  ) async {
+    final user = Users(
+      id: 1,
+      name: 'Leanne Graham',
+      username: 'Bret',
+      email: 'leanne@example.com',
+      address: Address(
+        street: 'Kulas Light',
+        suite: 'Apt. 556',
+        city: 'Gwenborough',
+        zipcode: '92998-3874',
+        geo: Geo(lat: '-37.3159', lng: '81.1496'),
+      ),
+      phone: '1-770-736-8031 x56442',
+      website: 'hildegard.org',
+      company: Company(
+        name: 'Romaguera-Crona',
+        catchPhrase: 'Multi-layered client-server neural-net',
+        bs: 'harness real-time e-markets',
+      ),
+    );
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(body: UserWidget(user: user)),
+      ),
+    );
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('Leanne Graham'), findsOneWidget);
+    expect(find.text('@Bret'), findsOneWidget);
+    expect(find.text('leanne@example.com'), findsOneWidget);
+    expect(
+      find.text('Kulas Light, Apt. 556, Gwenborough 92998-3874'),
+      findsOneWidget,
+    );
+    expect(find.text('Koordinat: -37.3159, 81.1496'), findsOneWidget);
+    expect(find.text('Romaguera-Crona'), findsOneWidget);
+    expect(find.text('harness real-time e-markets'), findsOneWidget);
   });
 }

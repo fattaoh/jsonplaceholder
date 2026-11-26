@@ -16,27 +16,30 @@ class HomePages extends StatelessWidget {
       length: 6,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('JSONPlaceholder API'),
+          title: const Text('JSONPlaceholder'),
           bottom: TabBar(
+            isScrollable: true,
             tabs: [
-              Tab(text: 'Posts', icon: Icon(Icons.message),),
-              Tab(text: 'Comments', icon: Icon(Icons.comment),),
-              Tab(text: 'Albums', icon: Icon(Icons.photo_album),),
-              Tab(text: 'Photos', icon: Icon(Icons.photo),),
-              Tab(text: 'Todos', icon: Icon(Icons.checklist),),
-              Tab(text: 'Users', icon: Icon(Icons.person),),
+              const Tab(text: 'Posts', icon: Icon(Icons.message)),
+              const Tab(text: 'Comments', icon: Icon(Icons.comment)),
+              const Tab(text: 'Albums', icon: Icon(Icons.photo_album)),
+              const Tab(text: 'Photos', icon: Icon(Icons.photo)),
+              const Tab(text: 'Todos', icon: Icon(Icons.checklist)),
+              const Tab(text: 'Users', icon: Icon(Icons.person)),
             ],
           ),
         ),
 
-        body: TabBarView(children: [
-          PostsTab(),
-          CommentsTab(),
-          AlbumsTab(),
-          PhotosTab(),
-          TodosTab(),
-          UsersTab(),
-        ],),
+        body: const TabBarView(
+          children: [
+            PostsTab(),
+            CommentsTab(),
+            AlbumsTab(),
+            PhotosTab(),
+            TodosTab(),
+            UsersTab(),
+          ],
+        ),
       ),
     );
   }
