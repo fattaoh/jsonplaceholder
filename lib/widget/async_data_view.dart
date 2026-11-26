@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jsonplaceholder/theme/app_colors.dart';
 
 class AsyncDataView<T> extends StatefulWidget {
   final Future<List<T>> Function() onFetch;
@@ -169,14 +170,14 @@ class _AsyncDataViewState<T> extends State<AsyncDataView<T>> {
                           style: theme.textTheme.headlineSmall?.copyWith(
                             fontWeight: FontWeight.w800,
                             letterSpacing: -0.5,
-                            color: const Color(0xFF20243A),
+                            color: AppColors.charcoal,
                           ),
                         ),
                         const SizedBox(height: 3),
                         Text(
                           _description,
                           style: theme.textTheme.bodyMedium?.copyWith(
-                            color: const Color(0xFF777D91),
+                            color: AppColors.charcoal,
                           ),
                         ),
                       ],
@@ -190,15 +191,15 @@ class _AsyncDataViewState<T> extends State<AsyncDataView<T>> {
                         vertical: 8,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: AppColors.cream,
                         borderRadius: BorderRadius.circular(30),
-                        border: Border.all(color: const Color(0xFFE6E8F0)),
+                        border: Border.all(color: AppColors.sand),
                       ),
                       child: Text(
                         visible == total ? '$total items' : '$visible / $total',
                         style: theme.textTheme.labelMedium?.copyWith(
                           fontWeight: FontWeight.w700,
-                          color: const Color(0xFF646A7D),
+                          color: AppColors.charcoal,
                         ),
                       ),
                     ),
@@ -209,12 +210,12 @@ class _AsyncDataViewState<T> extends State<AsyncDataView<T>> {
               Container(
                 height: 50,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.cream,
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: const Color(0xFFE7E9F0)),
-                  boxShadow: const [
+                  border: Border.all(color: AppColors.sand),
+                  boxShadow: [
                     BoxShadow(
-                      color: Color(0x080D1738),
+                      color: AppColors.charcoal.withValues(alpha: 0.06),
                       blurRadius: 16,
                       offset: Offset(0, 5),
                     ),
@@ -226,10 +227,10 @@ class _AsyncDataViewState<T> extends State<AsyncDataView<T>> {
                   textInputAction: TextInputAction.search,
                   decoration: InputDecoration(
                     hintText: 'Cari ${widget.title.toLowerCase()}...',
-                    hintStyle: const TextStyle(color: Color(0xFF9A9EAE)),
+                    hintStyle: const TextStyle(color: AppColors.brown),
                     prefixIcon: const Icon(
                       Icons.search,
-                      color: Color(0xFF85899B),
+                      color: AppColors.brown,
                       size: 21,
                     ),
                     suffixIcon: IconButton(
@@ -267,7 +268,7 @@ class _AsyncDataViewState<T> extends State<AsyncDataView<T>> {
           Text(
             'Memuat ${widget.title.toLowerCase()}...',
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: const Color(0xFF777D91),
+              color: AppColors.charcoal,
             ),
           ),
         ],
@@ -292,9 +293,9 @@ class _AsyncDataViewState<T> extends State<AsyncDataView<T>> {
             width: double.infinity,
             padding: const EdgeInsets.all(28),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.cream,
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: const Color(0xFFE7E9F0)),
+              border: Border.all(color: AppColors.sand),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -312,7 +313,7 @@ class _AsyncDataViewState<T> extends State<AsyncDataView<T>> {
                   message,
                   textAlign: TextAlign.center,
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: const Color(0xFF777D91),
+                    color: AppColors.brown,
                   ),
                 ),
                 const SizedBox(height: 18),

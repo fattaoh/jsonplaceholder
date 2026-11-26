@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jsonplaceholder/model/todos.dart';
+import 'package:jsonplaceholder/theme/app_colors.dart';
 
 class TodoWidget extends StatelessWidget {
   final Todos todos;
@@ -10,8 +11,8 @@ class TodoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final statusColor = todos.completed
-        ? const Color(0xFF168A66)
-        : const Color(0xFFE59B36);
+        ? AppColors.forest
+        : AppColors.brown;
 
     return Card(
       child: Padding(
@@ -35,8 +36,8 @@ class TodoWidget extends StatelessWidget {
                     style: theme.textTheme.titleSmall?.copyWith(
                       fontWeight: FontWeight.w700,
                       color: todos.completed
-                          ? const Color(0xFF777D91)
-                          : const Color(0xFF25293D),
+                          ? AppColors.brown
+                          : AppColors.charcoal,
                       decoration: todos.completed
                           ? TextDecoration.lineThrough
                           : null,
@@ -46,7 +47,7 @@ class TodoWidget extends StatelessWidget {
                   Text(
                     'TASK ${todos.id.toString().padLeft(3, '0')}  ·  USER ${todos.userId}',
                     style: theme.textTheme.labelSmall?.copyWith(
-                      color: const Color(0xFF85899B),
+                      color: AppColors.brown,
                       letterSpacing: 0.5,
                       fontWeight: FontWeight.w600,
                     ),

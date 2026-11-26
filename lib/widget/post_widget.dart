@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jsonplaceholder/theme/app_colors.dart';
 
 import '../model/posts.dart';
 
@@ -25,13 +26,13 @@ class PostWidget extends StatelessWidget {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                    color: AppColors.sand,
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
                     'POST  #${post.id.toString().padLeft(3, '0')}',
                     style: theme.textTheme.labelSmall?.copyWith(
-                      color: theme.colorScheme.primary,
+                      color: AppColors.forest,
                       fontWeight: FontWeight.w800,
                       letterSpacing: 0.7,
                     ),
@@ -47,7 +48,7 @@ class PostWidget extends StatelessWidget {
                 Text(
                   'User ${post.userId}',
                   style: theme.textTheme.labelMedium?.copyWith(
-                    color: const Color(0xFF73798C),
+                    color: AppColors.brown,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -59,14 +60,14 @@ class PostWidget extends StatelessWidget {
               style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w800,
                 height: 1.35,
-                color: const Color(0xFF25293D),
+                color: AppColors.charcoal,
               ),
             ),
             const SizedBox(height: 8),
             Text(
               post.body,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: const Color(0xFF73798C),
+                color: AppColors.brown,
                 height: 1.55,
               ),
             ),

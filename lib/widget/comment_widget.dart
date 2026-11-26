@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jsonplaceholder/model/comments.dart';
+import 'package:jsonplaceholder/theme/app_colors.dart';
 
 class CommentWidget extends StatelessWidget {
   final Comments comments;
@@ -49,7 +50,7 @@ class CommentWidget extends StatelessWidget {
                       Text(
                         comments.email,
                         style: theme.textTheme.bodySmall?.copyWith(
-                          color: const Color(0xFF777D91),
+                          color: AppColors.brown,
                         ),
                       ),
                     ],
@@ -62,13 +63,13 @@ class CommentWidget extends StatelessWidget {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF2F3F8),
+                    color: AppColors.sand,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
                     'POST ${comments.postId}',
                     style: theme.textTheme.labelSmall?.copyWith(
-                      color: const Color(0xFF656B7D),
+                      color: AppColors.charcoal,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -82,7 +83,7 @@ class CommentWidget extends StatelessWidget {
             Text(
               comments.body,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: const Color(0xFF565C70),
+                color: AppColors.brown,
                 height: 1.5,
               ),
             ),

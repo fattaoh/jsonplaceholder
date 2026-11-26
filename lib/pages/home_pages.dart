@@ -5,6 +5,7 @@ import 'package:jsonplaceholder/pages/tabs/photos_tab.dart';
 import 'package:jsonplaceholder/pages/tabs/posts_tab.dart';
 import 'package:jsonplaceholder/pages/tabs/todos_tab.dart';
 import 'package:jsonplaceholder/pages/tabs/users_tab.dart';
+import 'package:jsonplaceholder/theme/app_colors.dart';
 
 class HomePages extends StatefulWidget {
   const HomePages({super.key});
@@ -60,7 +61,7 @@ class _HomePagesState extends State<HomePages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F6FA),
+      backgroundColor: AppColors.sand,
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -119,8 +120,8 @@ class _TopBar extends StatelessWidget {
       height: 76,
       padding: EdgeInsets.symmetric(horizontal: isWide ? 36 : 20),
       decoration: const BoxDecoration(
-        color: Colors.white,
-        border: Border(bottom: BorderSide(color: Color(0xFFE9EAF0))),
+        color: AppColors.cream,
+        border: Border(bottom: BorderSide(color: AppColors.sand)),
       ),
       child: Row(
         children: [
@@ -132,7 +133,7 @@ class _TopBar extends StatelessWidget {
                 color: theme.colorScheme.primary,
                 borderRadius: BorderRadius.circular(13),
               ),
-              child: const Icon(Icons.data_object, color: Colors.white),
+              child: const Icon(Icons.data_object, color: AppColors.cream),
             ),
             const SizedBox(width: 12),
           ],
@@ -150,7 +151,7 @@ class _TopBar extends StatelessWidget {
               Text(
                 'API DATA EXPLORER',
                 style: theme.textTheme.labelSmall?.copyWith(
-                  color: const Color(0xFF85899B),
+                  color: AppColors.brown,
                   letterSpacing: 1.4,
                   fontWeight: FontWeight.w700,
                 ),
@@ -162,7 +163,7 @@ class _TopBar extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               decoration: BoxDecoration(
-                color: const Color(0xFFF4F5FA),
+                color: AppColors.sand,
                 borderRadius: BorderRadius.circular(30),
               ),
               child: Row(
@@ -213,7 +214,7 @@ class _Sidebar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 250,
-      color: const Color(0xFF171B32),
+      color: AppColors.charcoal,
       padding: const EdgeInsets.fromLTRB(18, 22, 18, 18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -224,10 +225,10 @@ class _Sidebar extends StatelessWidget {
                 width: 42,
                 height: 42,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF6975F5),
+                  color: AppColors.forest,
                   borderRadius: BorderRadius.circular(13),
                 ),
-                child: const Icon(Icons.data_object, color: Colors.white),
+                child: const Icon(Icons.data_object, color: AppColors.cream),
               ),
               const SizedBox(width: 12),
               const Column(
@@ -236,7 +237,7 @@ class _Sidebar extends StatelessWidget {
                   Text(
                     'API STUDIO',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.cream,
                       fontSize: 13,
                       fontWeight: FontWeight.w800,
                       letterSpacing: 1.1,
@@ -245,7 +246,7 @@ class _Sidebar extends StatelessWidget {
                   SizedBox(height: 3),
                   Text(
                     'JSONPlaceholder',
-                    style: TextStyle(color: Color(0xFFA8ADC2), fontSize: 11),
+                    style: TextStyle(color: AppColors.sand, fontSize: 11),
                   ),
                 ],
               ),
@@ -257,7 +258,7 @@ class _Sidebar extends StatelessWidget {
             child: Text(
               'WORKSPACE',
               style: TextStyle(
-                color: Color(0xFF7F849B),
+                color: AppColors.sand,
                 fontSize: 10,
                 fontWeight: FontWeight.w800,
                 letterSpacing: 1.5,
@@ -275,19 +276,21 @@ class _Sidebar extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.06),
+              color: AppColors.cream.withValues(alpha: 0.06),
               borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
+              border: Border.all(
+                color: AppColors.cream.withValues(alpha: 0.14),
+              ),
             ),
             child: const Row(
               children: [
-                Icon(Icons.api, color: Color(0xFF9EA7FF), size: 20),
+                Icon(Icons.api, color: AppColors.sand, size: 20),
                 SizedBox(width: 10),
                 Expanded(
                   child: Text(
                     'Explore public sample data',
                     style: TextStyle(
-                      color: Color(0xFFD8DAE6),
+                      color: AppColors.cream,
                       fontSize: 11,
                       height: 1.4,
                     ),
@@ -319,7 +322,7 @@ class _SidebarItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 5),
       child: Material(
-        color: selected ? const Color(0xFF30385A) : Colors.transparent,
+        color: selected ? AppColors.forest : Colors.transparent,
         borderRadius: BorderRadius.circular(11),
         child: InkWell(
           onTap: onTap,
@@ -333,7 +336,7 @@ class _SidebarItem extends StatelessWidget {
                   width: 3,
                   height: selected ? 25 : 0,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF9EA7FF),
+                    color: AppColors.sand,
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),
@@ -342,14 +345,14 @@ class _SidebarItem extends StatelessWidget {
                   selected ? section.activeIcon : section.icon,
                   size: 20,
                   color: selected
-                      ? const Color(0xFFB7BEFF)
-                      : const Color(0xFF9DA2B7),
+                      ? AppColors.cream
+                      : AppColors.sand,
                 ),
                 const SizedBox(width: 12),
                 Text(
                   section.label,
                   style: TextStyle(
-                    color: selected ? Colors.white : const Color(0xFFB9BDCC),
+                    color: selected ? AppColors.cream : AppColors.sand,
                     fontSize: 13,
                     fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
                   ),
@@ -382,8 +385,8 @@ class _MobileNavigation extends StatelessWidget {
       return Container(
         height: 66,
         decoration: const BoxDecoration(
-          color: Colors.white,
-          border: Border(top: BorderSide(color: Color(0xFFE9EAF0))),
+          color: AppColors.cream,
+          border: Border(top: BorderSide(color: AppColors.sand)),
         ),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -453,7 +456,7 @@ class _CompactNavigationItem extends StatelessWidget {
                 size: 19,
                 color: selected
                     ? theme.colorScheme.primary
-                    : const Color(0xFF85899B),
+                    : AppColors.brown,
               ),
               const SizedBox(width: 7),
               Text(
@@ -461,7 +464,7 @@ class _CompactNavigationItem extends StatelessWidget {
                 style: theme.textTheme.labelMedium?.copyWith(
                   color: selected
                       ? theme.colorScheme.primary
-                      : const Color(0xFF686E80),
+                      : AppColors.brown,
                   fontWeight: selected ? FontWeight.w800 : FontWeight.w600,
                 ),
               ),

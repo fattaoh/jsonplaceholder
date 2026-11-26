@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jsonplaceholder/model/photos.dart';
+import 'package:jsonplaceholder/theme/app_colors.dart';
 
 class PhotoWidget extends StatelessWidget {
   final Photos photos;
@@ -29,7 +30,7 @@ class PhotoWidget extends StatelessWidget {
                     loadingBuilder: (context, child, progress) {
                       if (progress == null) return child;
                       return Container(
-                        color: const Color(0xFFF0F1F6),
+                        color: AppColors.sand,
                         alignment: Alignment.center,
                         child: const SizedBox(
                           width: 20,
@@ -39,11 +40,11 @@ class PhotoWidget extends StatelessWidget {
                       );
                     },
                     errorBuilder: (context, error, stackTrace) => Container(
-                      color: const Color(0xFFF0F1F6),
+                      color: AppColors.sand,
                       alignment: Alignment.center,
                       child: Icon(
                         Icons.image_not_supported_outlined,
-                        color: theme.colorScheme.primary,
+                        color: AppColors.forest,
                       ),
                     ),
                   ),
@@ -67,7 +68,7 @@ class PhotoWidget extends StatelessWidget {
                     Text(
                       'PHOTO ${photos.id}  ·  ALBUM ${photos.albumId}',
                       style: theme.textTheme.labelSmall?.copyWith(
-                        color: const Color(0xFF85899B),
+                        color: AppColors.brown,
                         letterSpacing: 0.5,
                         fontWeight: FontWeight.w700,
                       ),
@@ -79,7 +80,7 @@ class PhotoWidget extends StatelessWidget {
               Icon(
                 Icons.open_in_full_rounded,
                 size: 18,
-                color: theme.colorScheme.primary,
+                color: AppColors.forest,
               ),
             ],
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jsonplaceholder/model/albums.dart';
+import 'package:jsonplaceholder/theme/app_colors.dart';
 
 class AlbumWidget extends StatelessWidget {
   final Albums albums;
@@ -21,8 +22,8 @@ class AlbumWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    theme.colorScheme.primary.withValues(alpha: 0.18),
-                    theme.colorScheme.tertiary.withValues(alpha: 0.12),
+                    AppColors.sand,
+                    AppColors.cream,
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -31,7 +32,7 @@ class AlbumWidget extends StatelessWidget {
               ),
               child: Icon(
                 Icons.photo_library_outlined,
-                color: theme.colorScheme.primary,
+                color: AppColors.forest,
                 size: 27,
               ),
             ),
@@ -45,14 +46,14 @@ class AlbumWidget extends StatelessWidget {
                     style: theme.textTheme.titleSmall?.copyWith(
                       fontWeight: FontWeight.w800,
                       height: 1.35,
-                      color: const Color(0xFF25293D),
+                      color: AppColors.charcoal,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     'ALBUM ${albums.id.toString().padLeft(3, '0')}  ·  USER ${albums.userId}',
                     style: theme.textTheme.labelSmall?.copyWith(
-                      color: const Color(0xFF85899B),
+                      color: AppColors.brown,
                       letterSpacing: 0.6,
                       fontWeight: FontWeight.w700,
                     ),
@@ -62,7 +63,7 @@ class AlbumWidget extends StatelessWidget {
             ),
             Icon(
               Icons.chevron_right_rounded,
-              color: theme.colorScheme.primary.withValues(alpha: 0.7),
+              color: AppColors.forest,
             ),
           ],
         ),
