@@ -13,6 +13,8 @@ class UsersTab extends StatelessWidget {
       itemBuilder: (context, user, index) {
         return UserWidget(user: user);
       },
+      searchText: (user) =>
+          '${user.name} ${user.username} ${user.email} ${user.company.name}',
       title: 'Users',
     );
   }

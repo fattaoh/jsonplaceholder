@@ -13,6 +13,7 @@ class PhotosTab extends StatelessWidget {
       itemBuilder: (context, photos, index) {
         return PhotoWidget(photos: photos);
       },
+      searchText: (photos) => '${photos.title} ${photos.albumId} ${photos.id}',
       title: 'Photos',
     );
   }

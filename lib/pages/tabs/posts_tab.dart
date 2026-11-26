@@ -13,6 +13,7 @@ class PostsTab extends StatelessWidget {
       itemBuilder: (context, post, index) {
         return PostWidget(post: post);
       },
+      searchText: (post) => '${post.title} ${post.body} ${post.userId}',
       title: 'Posts',
     );
   }

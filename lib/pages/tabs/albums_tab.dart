@@ -13,6 +13,7 @@ class AlbumsTab extends StatelessWidget {
       itemBuilder: (context, album, index) {
         return AlbumWidget(albums: album);
       },
+      searchText: (album) => '${album.title} ${album.userId}',
       title: 'Albums',
     );
   }

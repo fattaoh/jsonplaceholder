@@ -13,6 +13,7 @@ class TodosTab extends StatelessWidget {
       itemBuilder: (context, todo, index) {
         return TodoWidget(todos: todo);
       },
+      searchText: (todo) => '${todo.title} ${todo.userId} ${todo.completed}',
       title: 'Todos',
     );
   }

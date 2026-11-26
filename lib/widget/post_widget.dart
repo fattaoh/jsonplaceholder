@@ -10,16 +10,10 @@ class PostWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Card(
-      elevation: 1.5,
-      color: Colors.grey[200],
-      margin: const EdgeInsets.only(left: 8, right:8, top:8),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: Colors.grey.withValues(alpha: 0.2)),
-      ),
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -27,49 +21,54 @@ class PostWidget extends StatelessWidget {
               children: [
                 Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 3,
+                    horizontal: 10,
+                    vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: theme.primaryColor,
-                    borderRadius: BorderRadius.circular(6),
+                    color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
-                    '#${post.id}',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                      color: Colors.white,
+                    'POST  #${post.id.toString().padLeft(3, '0')}',
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: theme.colorScheme.primary,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 0.7,
                     ),
                   ),
                 ),
-                const SizedBox(width: 10),
+                const Spacer(),
+                Icon(
+                  Icons.person_outline,
+                  size: 17,
+                  color: theme.colorScheme.primary,
+                ),
+                const SizedBox(width: 5),
                 Text(
-                  'User ID: ${post.userId}',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey[600],
-                    fontWeight: FontWeight.w500,
+                  'User ${post.userId}',
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    color: const Color(0xFF73798C),
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 15),
             Text(
               post.title,
               style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
+                fontWeight: FontWeight.w800,
+                height: 1.35,
+                color: const Color(0xFF25293D),
               ),
             ),
-            const SizedBox(height: 6),
+            const SizedBox(height: 8),
             Text(
               post.body,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: Colors.black,
-                height: 1.35,
+                color: const Color(0xFF73798C),
+                height: 1.55,
               ),
-              textAlign: TextAlign.justify,
             ),
           ],
         ),

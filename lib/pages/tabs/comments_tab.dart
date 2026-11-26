@@ -14,6 +14,8 @@ class CommentsTab extends StatelessWidget {
       itemBuilder: (context, comments, index) {
         return CommentWidget(comments: comments);
       },
+      searchText: (comments) =>
+          '${comments.name} ${comments.email} ${comments.body}',
       title: 'Comments',
     );
   }

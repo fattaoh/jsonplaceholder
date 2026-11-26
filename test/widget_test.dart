@@ -8,6 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jsonplaceholder/model/users.dart';
+import 'package:jsonplaceholder/widget/async_data_view.dart';
 import 'package:jsonplaceholder/widget/user_widget.dart';
 
 void main() {
@@ -51,5 +52,49 @@ void main() {
     expect(find.text('Koordinat: -37.3159, 81.1496'), findsOneWidget);
     expect(find.text('Romaguera-Crona'), findsOneWidget);
     expect(find.text('harness real-time e-markets'), findsOneWidget);
+  });
+
+  testWidgets('data view searches items and refreshes the API data', (
+    WidgetTester tester,
+  ) async {
+    var fetchCount = 0;
+    Future<List<String>> fetchItems() async {
+      fetchCount++;
+      return const ['First post', 'Second post'];
+    }
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: AsyncDataView<String>(
+            onFetch: fetchItems,
+            itemBuilder: (context, item, index) => Card(
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Text(item),
+              ),
+            ),
+            searchText: (item) => item,
+            title: 'Posts',
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('First post'), findsOneWidget);
+    expect(find.text('Second post'), findsOneWidget);
+
+    await tester.enterText(find.byType(TextField), 'second');
+    await tester.pumpAndSettle();
+
+    expect(find.text('First post'), findsNothing);
+    expect(find.text('Second post'), findsOneWidget);
+    expect(find.text('1 / 2'), findsOneWidget);
+
+    await tester.tap(find.byTooltip('Muat ulang'));
+    await tester.pumpAndSettle();
+
+    expect(fetchCount, 2);
   });
 }
